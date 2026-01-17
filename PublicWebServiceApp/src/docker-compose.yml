@@ -2,9 +2,9 @@ services:
   dnac-git: 
     container_name: dnac-git
     build: . 
-    networks:
-      - dist-sys-netw
     env_file: .env
+    # Unfortunately, idk any other way to allow access to the tunnel routes other than this
+    network_mode: host
 networks:
   dist-sys-netw:
 
