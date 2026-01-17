@@ -1,0 +1,10 @@
+services: 
+  dnac-git: 
+    container_name: dnac-git
+    build: . 
+    networks:
+      - dist-sys-netw
+    env_file: .env
+networks:
+  dist-sys-netw:
+
