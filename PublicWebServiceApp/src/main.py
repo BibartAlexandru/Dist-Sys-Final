@@ -19,10 +19,22 @@ def get_token():
     try:
         res = requests.post(dnacurl + auth_endpoint, auth=(dnacuser, dnacpw), verify=False)
         token = res.json().get('Token')
+    except (ConnectionError, requests.exceptions.Timeout):
+        pass
     except Exception as e:
         print(e)
-        exit(1)
+        
     print(f'Token is: {token}')
+    return False
+
+for _ in range(5):
+    print("Attempting to get token!")
+    if get_token() == True:
+        break
+    time.sleep(5)
+else:
+    print("Failed to get token. Quitting...")
+    exit(1)
 
 while True:
     time.sleep(5)
