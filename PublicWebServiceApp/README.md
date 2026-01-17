@@ -21,4 +21,4 @@ cisco-secure-client & disown
 ```
 - Enter the Lab Network Address received in the email in the network field. Also enter your username and password. All these credentials were received in the email
 - You can see details about the instance in the link from the email (Navigate there)
-- Use the credentials in https://devnetsandbox.cisco.com/DevNet/operation_hub > Right Click on the instance > Access Details > administrator/Cisco1234!
+- Use the credentials for access to the API in https://devnetsandbox.cisco.com/DevNet/operation_hub > Right Click on the instance > Access Details > administrator/Cisco1234!

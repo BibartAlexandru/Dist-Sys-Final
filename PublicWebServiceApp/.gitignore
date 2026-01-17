@@ -1,1 +1,4 @@
 *.env
+MYCREDS.md
+configs_dir
+configs_dir/*

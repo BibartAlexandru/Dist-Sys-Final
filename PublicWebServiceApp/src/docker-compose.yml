@@ -5,6 +5,10 @@ services:
     env_file: .env
     # Unfortunately, idk any other way to allow access to the tunnel routes other than this
     network_mode: host
+    volumes:
+      - ./configs_dir:/configs_dir
 networks:
   dist-sys-netw:
+volumes:
+  configs_dir:
 
