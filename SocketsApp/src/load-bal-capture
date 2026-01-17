@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo docker exec -it load-bal /bin/bash -c "tcpdump -i eth0 tcp port 80 -vvv -nnn"

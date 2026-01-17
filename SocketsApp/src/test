@@ -1,0 +1,10 @@
+#!/bin/bash
+for i in {1..10}; do
+  if [ $i == 1 ]; then 
+    curl -s http://localhost:8000
+  else
+    curl -s http://localhost:8000 1>/dev/null
+  fi
+done
+echo "Opened 10 connections!" 
+
