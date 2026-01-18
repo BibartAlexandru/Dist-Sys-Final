@@ -24,7 +24,7 @@ chmod +x ./lg # This is used to print logs
 - Create an account
 - Click on "Catalyst Center Sandbox" > "Launch"
 - After about 1 hour, the instance will be ready and you should receive an email with connection details
-- Download Cisco Secure Client VPN from Cisco's website, or just follow the instructions in the email. On Arch Linux, you can `
+- Download Cisco Secure Client VPN from Cisco's website or download openconnect. Follow the instructions in the email. On Arch Linux, you can `
 #### Download procedure on Arch Linux
 ```
 yay -Sy cisco-secure-client
@@ -33,6 +33,11 @@ sudo systemctl status vpnagentd.service
 # Should be up at this point. Read more at: https://aur.archlinux.org/packages/cisco-secure-client
 # And you can start it!
 cisco-secure-client & disown
+```
+### Debian 
+```
+apt update && apt install -y openconnect
+sudo openconnect --server=<server-from-email>
 ```
 - Enter the Lab Network Address received in the email in the network field. Also enter your username and password. All these credentials were received in the email
 - You can see details about the instance in the link from the email (Navigate there)
