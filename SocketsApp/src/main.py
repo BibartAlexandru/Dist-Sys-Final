@@ -76,8 +76,12 @@ async def balance_traffic(s_from_client, s_to_server, ce: ConnectionEntry):
         send_traffic_from_to(s_to_server  , s_from_client, ce)
     )
 
-def assign_server_to_client() -> tuple[str, int]:
+def assign_server_to_client(client_sock) -> tuple[str, int]:
     global server_pointer
+    for active_conn in active_connections:
+        # Assign the same server to all connections from the same IP. I know I should probably change this touple to a class
+        if active_conn.client_src[0] == client_sock[0]:
+            return active_conn.srv_dst
     assigned_server = web_server_hostnames[server_pointer]
     server_pointer = (server_pointer + 1 ) % len(web_server_hostnames)
     return (assigned_server, 80)
@@ -94,9 +98,9 @@ async def wait_for_connections():
 
     while True:
         conn, _ = await loop.sock_accept(s)
-        assigned_server_socket: tuple[str, int] = assign_server_to_client()
         local_s: tuple[str, int] = conn.getsockname()
         remote_s: tuple[str, int] = conn.getpeername()
+        assigned_server_socket: tuple[str, int] = assign_server_to_client(remote_s)
         print(f'Assigned {remote_s} to {assigned_server_socket}!')
         s_to_server = socket(AF_INET, SOCK_STREAM)
         s_to_server.setblocking(False)
