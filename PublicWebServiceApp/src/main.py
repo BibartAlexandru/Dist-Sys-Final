@@ -211,7 +211,8 @@ def main():
     if is_different_from_last_commit():
         commit_diff()
 
-main()
+
 while True:
     # Basically once a day. Cron would be better than this loop, but it is what it is...
+    main()
     time.sleep(60 * 60 * 24)
